@@ -75,7 +75,21 @@
 // }
 
 //探索
-{
-    let a=0;
+// {
+    // let a=0;
+// }
+// console.log(a); //ReferenceError: a is not defined  大括号内部的声明不能用于父作用域
+
+
+//块内函数
+function doo(){
+    console.log("d00");
 }
-console.log(a); //ReferenceError: a is not defined  大括号内部的声明不能用于父作用域
+{
+    if(false){
+        function doo(){
+            console.log("doo");
+        }
+    }
+    doo();  //d00，即没有被上面块覆盖，即在块中定义的函数只在当前块有效
+}
