@@ -82,14 +82,41 @@
 
 
 //块内函数
-function doo(){
-    console.log("d00");
-}
+// function doo(){
+//     console.log("d00");
+// }
+// {
+//     if(false){
+//         function doo(){
+//             console.log("doo");
+//         }
+//     }
+//     doo();  //d00，即没有被上面块覆盖，即在块中定义的函数只在当前块有效
+// }
+
+//var变量的作用域只有全局作用域和函数作用域之分
+//测试1
+// {
+//     var a=10;
+// }
+// console.log(a); //10    没有块作用域
+
+//test2
+// function foo(){
+//     var b=20;
+// }
+// console.log(b);
+// ReferenceError: b is not defined     函数作用域和全局作用域不相通
+
+//test3
 {
-    if(false){
-        function doo(){
-            console.log("doo");
+    {
+        {
+            var a=10;
         }
+        var b=a;
     }
-    doo();  //d00，即没有被上面块覆盖，即在块中定义的函数只在当前块有效
+    var c=b;
 }
+console.log(a,b,c); //10 10 10
+// 各个块作用域均属于一个作用域---全局作用域
