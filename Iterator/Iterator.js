@@ -117,18 +117,31 @@
 // }
 //1 2 3
 //但是如果改为不类似于数组的对象就会出错
-var Obj={
-    a:1,
-    b:2,
-    c:3,
-    length:3,
-    [Symbol.iterator]:Array.prototype[Symbol.iterator], //赋值为数组的方法
-}
-for(var item of Obj){
-    console.log(item);
-}
+// var Obj={
+//     a:1,
+//     b:2,
+//     c:3,
+//     length:3,
+//     [Symbol.iterator]:Array.prototype[Symbol.iterator], //赋值为数组的方法
+// }
+// for(var item of Obj){
+//     console.log(item);
+// }
 // undefined
 // undefined
 // undefined
 
 // 如果Symbol.iterator方法对应的不是遍历器生成函数（即会返回一个遍历器对象），解释引擎将会报错。
+
+//对数组和 Set 结构进行解构赋值时，会默认调用Symbol.iterator方法。
+// let set=new Set().add('a').add('b').add('c');
+// let [x,y]=set;
+// let [m,...n]=set;
+// console.log([x,y]);
+// console.log(m);
+// console.log(n);
+// Array(2) ["a", "b"]
+// a
+// Array(2) ["b", "c"]
+
+//扩展运算符（...）也会调用默认的 Iterator 接口。
